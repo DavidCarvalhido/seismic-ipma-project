@@ -1,0 +1,52 @@
+-- Create the database
+-- CREATE DATABASE seismic_ipma_db;
+
+-- Initial database structure		
+-- Creation of the stg.seismic_events table:
+CREATE TABLE IF NOT EXISTS stg.seismic_events (
+	event_id SERIAL PRIMARY KEY,
+	googlemapref VARCHAR(255),
+	degree VARCHAR(255),
+	sismoId VARCHAR(255),
+	dataUpdate TIMESTAMP,
+	magType VARCHAR(10),
+	obsRegion VARCHAR(255),
+	lon NUMERIC(7, 4),
+	source VARCHAR(255),
+	depth INT,
+	tensorRef VARCHAR(255),
+	sensed BOOLEAN DEFAULT NULL,
+	shakemapid BIGINT,
+	time TIMESTAMP,
+	lat NUMERIC(7, 4),
+	shakemapref VARCHAR(255),
+	local VARCHAR(255),
+	magnitud NUMERIC(10,2),
+	created_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Creation of the enr.seismic_events_trans:
+CREATE TABLE IF NOT EXISTS enr.seismic_events_transformed (
+	event_id SERIAL PRIMARY KEY,
+	googlemapref VARCHAR(255),
+	degree VARCHAR(255),
+	sismoId VARCHAR(255),
+	dataUpdate TIMESTAMP,
+	magType VARCHAR(10),
+	obsRegion VARCHAR(255),
+	lon NUMERIC(7, 4),
+	source VARCHAR(255),
+	depth INT,
+	tensorRef VARCHAR(255),
+	sensed BOOLEAN DEFAULT NULL,
+	shakemapid BIGINT,
+	time TIMESTAMP,
+	lat NUMERIC(7, 4),
+	shakemapref VARCHAR(255),
+	local VARCHAR(255),
+	magnitud NUMERIC(10,2),
+	classification VARCHAR(250),
+	created_timestamp TIMESTAMP,
+	updated_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
